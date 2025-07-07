@@ -305,6 +305,18 @@
 
 		}
 
+	// Header blur effect on scroll
+		$window.on('scroll', function() {
+			var scrollTop = $window.scrollTop();
+			
+			// Apply blur effect when scrolled more than 50px
+			if (scrollTop > 50) {
+				$header.addClass('scrolled');
+			} else {
+				$header.removeClass('scrolled');
+			}
+		});
+
 	// Banner.
 		$banner.each(function() {
 

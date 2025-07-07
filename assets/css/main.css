@@ -3242,7 +3242,20 @@ min-height: 15em;
 		top: 0;
 		width: 100%;
 		z-index: 10000;
+		/* Add transition for smooth blur effect */
+		-moz-transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+		-webkit-transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+		-ms-transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
+		transition: backdrop-filter 0.3s ease, background-color 0.3s ease;
 	}
+
+		/* Blur effect when scrolled */
+		#header.scrolled {
+			backdrop-filter: blur(10px);
+			-webkit-backdrop-filter: blur(10px);
+			background-color: rgba(42, 47, 74, 0.8);
+			box-shadow: 0 0 0.5em 0 rgba(0, 0, 0, 0.3);
+		}
 
 		#header .logo {
 			border: 0;
