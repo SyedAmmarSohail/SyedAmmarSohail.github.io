@@ -3302,6 +3302,7 @@ min-height: 15em;
 			flex-grow: 1;
 			height: inherit;
 			line-height: inherit;
+			padding-right: 1.5em;
 		}
 
 		#banner nav {
@@ -3465,12 +3466,16 @@ min-height: 15em;
 					padding: 0 1em;
 				}
 
+				#header nav {
+					padding-right: 1em;
+				}
+
 				#header nav a {
 					padding: 0 0.5em;
 				}
 
 					#header nav a:last-child {
-						padding-right: 1em;
+						padding-right: 0;
 					}
 
 					#header nav a[href="#menu"] {
@@ -3495,6 +3500,10 @@ min-height: 15em;
 
 			#header .logo span {
 				display: none;
+			}
+
+			#header nav {
+				padding-right: 0.75em;
 			}
 
 			#header nav a[href="#menu"] {
@@ -3523,8 +3532,31 @@ min-height: 15em;
 	border-radius: 100%;
 	margin-left: 2em;
 	margin-top: -3em;
-	display: inline;
-width: 22%;
+	display: inline-block;
+	width: 22%;
+	max-width: 300px;
+	min-width: 200px;
+	height: auto;
+	object-fit: cover;
+	overflow: hidden;
+}
+
+@media screen and (max-width: 736px) {
+	.avatar {
+		width: 25%;
+		min-width: 150px;
+		margin-left: 1em;
+		margin-top: -2em;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.avatar {
+		width: 30%;
+		min-width: 120px;
+		margin-left: 0.5em;
+		margin-top: -1.5em;
+	}
 }
 
 
@@ -6885,13 +6917,10 @@ width: 22%;
 
 /* Theme Toggle Styles */
 .theme-toggle-container {
-	position: absolute;
-	right: 1.5em;
-	top: 3.5em;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	z-index: 10001;
+	margin-left: 0.5em;
 }
 
 .theme-toggle {
@@ -6968,7 +6997,7 @@ body.dark-theme .theme-toggle-moon {
 
 /* Light theme styles */
 body.light-theme {
-	background: #f8f9fa !important;
+	background: #ffffff !important;
 	color: #2c3e50 !important;
 }
 
@@ -6977,7 +7006,7 @@ body.light-theme * {
 }
 
 body.light-theme #wrapper {
-	background: #f8f9fa !important;
+	background: #ffffff !important;
 }
 
 body.light-theme #header {
@@ -7059,7 +7088,7 @@ body.light-theme #banner {
 }
 
 body.light-theme #banner:after {
-	background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%) !important;
+	background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.95) 100%) !important;
 }
 
 body.light-theme #banner h1 {
@@ -7071,13 +7100,34 @@ body.light-theme #banner .content p {
 }
 
 body.light-theme #main {
-	background-color: #f8f9fa !important;
+	background-color: #ffffff !important;
 	color: #2c3e50 !important;
 }
 
 body.light-theme #main > * {
 	background-color: #ffffff !important;
 	color: #2c3e50 !important;
+}
+
+/* Fix image visibility in light theme */
+body.light-theme .image img {
+	filter: none !important;
+	opacity: 1 !important;
+}
+
+body.light-theme .tiles article .image img {
+	filter: brightness(0.9) contrast(1.1) !important;
+	opacity: 1 !important;
+}
+
+body.light-theme .avatar {
+	filter: none !important;
+	opacity: 1 !important;
+}
+
+/* Fix the line under headings in light theme */
+body.light-theme header.major > :first-child:after {
+	background-color: #2c3e50 !important;
 }
 
 body.light-theme section {
@@ -7207,8 +7257,7 @@ body.light-theme #menu .close:before, body.light-theme #menu .close:after {
 /* Responsive styles for theme toggle */
 @media screen and (max-width: 736px) {
 	.theme-toggle-container {
-		right: 1em;
-		top: 2.8em;
+		margin-left: 0.5em;
 	}
 	
 	.theme-toggle {
@@ -7225,8 +7274,7 @@ body.light-theme #menu .close:before, body.light-theme #menu .close:after {
 
 @media screen and (max-width: 480px) {
 	.theme-toggle-container {
-		right: 0.75em;
-		top: 2.75em;
+		margin-left: 0.25em;
 	}
 	
 	.theme-toggle {
