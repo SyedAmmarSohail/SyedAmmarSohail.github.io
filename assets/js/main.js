@@ -340,11 +340,10 @@
 		});
 
 	// Menu.
-		var $menu = $('#menu'),
-			$menuInner;
+		var $menu = $('#menu');
 
 		$menu.wrapInner('<div class="inner"></div>');
-		$menuInner = $menu.children('.inner');
+
 		$menu._locked = false;
 
 		$menu._lock = function() {
@@ -383,7 +382,8 @@
 
 		};
 
-		$menuInner
+		$menu
+			.appendTo($body)
 			.on('click', function(event) {
 				event.stopPropagation();
 			})
@@ -398,20 +398,12 @@
 					$menu._hide();
 
 				// Redirect.
+					if (href == '#menu')
+						return;
+
 					window.setTimeout(function() {
 						window.location.href = href;
-					}, 250);
-
-			});
-
-		$menu
-			.appendTo($body)
-			.on('click', function(event) {
-
-				event.stopPropagation();
-				event.preventDefault();
-
-				$body.removeClass('is-menu-visible');
+					}, 350);
 
 			})
 			.append('<a class="close" href="#menu">Close</a>');
@@ -419,8 +411,8 @@
 		$body
 			.on('click', 'a[href="#menu"]', function(event) {
 
-				event.stopPropagation();
 				event.preventDefault();
+				event.stopPropagation();
 
 				// Toggle.
 					$menu._toggle();
@@ -439,5 +431,35 @@
 						$menu._hide();
 
 			});
+
+	// Theme Toggle Functionality
+	var $themeToggle = $('#theme-toggle');
+	var $body = $('body');
+
+	// Check for saved theme preference or default to 'dark'
+	var currentTheme = localStorage.getItem('theme') || 'dark';
+	
+	// Set initial theme
+	if (currentTheme === 'light') {
+		$body.addClass('light-theme');
+	} else {
+		$body.addClass('dark-theme');
+	}
+
+	// Theme toggle event listener
+	$themeToggle.on('click', function() {
+		if ($body.hasClass('light-theme')) {
+			// Switch to dark theme
+			$body.removeClass('light-theme').addClass('dark-theme');
+			localStorage.setItem('theme', 'dark');
+		} else {
+			// Switch to light theme
+			$body.removeClass('dark-theme').addClass('light-theme');
+			localStorage.setItem('theme', 'light');
+		}
+	});
+
+	// Add smooth transition for theme switching
+	$body.css('transition', 'background-color 0.3s ease, color 0.3s ease');
 
 })(jQuery);
