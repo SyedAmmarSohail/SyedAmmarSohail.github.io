@@ -7187,6 +7187,37 @@ body.light-theme .tiles article:hover {
 	background-color: #f8f9fa !important;
 }
 
+/* Lighter backgrounds for light theme with better text visibility */
+body.light-theme .tiles article:nth-child(6n - 5):before {
+	background-color: #e3f2fd;
+	opacity: 0.7;
+}
+
+body.light-theme .tiles article:nth-child(6n - 4):before {
+	background-color: #f3e5f5;
+	opacity: 0.7;
+}
+
+body.light-theme .tiles article:nth-child(6n - 3):before {
+	background-color: #e8f5e8;
+	opacity: 0.7;
+}
+
+body.light-theme .tiles article:nth-child(6n - 2):before {
+	background-color: #e1f5fe;
+	opacity: 0.7;
+}
+
+body.light-theme .tiles article:nth-child(6n - 1):before {
+	background-color: #e1f5fe;
+	opacity: 0.7;
+}
+
+body.light-theme .tiles article:nth-child(6n):before {
+	background-color: #e8f5e8;
+	opacity: 0.7;
+}
+
 body.light-theme .tiles article h3 a {
 	color: #2c3e50 !important;
 }
@@ -7207,6 +7238,53 @@ body.light-theme input[type="text"], body.light-theme input[type="email"], body.
 
 body.light-theme input[type="text"]:focus, body.light-theme input[type="email"]:focus, body.light-theme textarea:focus {
 	border-color: #3498db !important;
+}
+
+/* Fix form labels and placeholders in light theme */
+body.light-theme label {
+	color: #2c3e50 !important;
+}
+
+body.light-theme ::-webkit-input-placeholder {
+	color: #6c757d !important;
+}
+
+body.light-theme :-moz-placeholder {
+	color: #6c757d !important;
+}
+
+body.light-theme ::-moz-placeholder {
+	color: #6c757d !important;
+}
+
+body.light-theme :-ms-input-placeholder {
+	color: #6c757d !important;
+}
+
+body.light-theme .contact-method {
+	color: #2c3e50 !important;
+}
+
+body.light-theme .contact-method h3 {
+	color: #2c3e50 !important;
+}
+
+/* Ensure all form-related text is visible */
+body.light-theme form {
+	color: #2c3e50 !important;
+}
+
+body.light-theme form label {
+	color: #2c3e50 !important;
+	font-weight: 600;
+}
+
+body.light-theme #contactme p {
+	color: #2c3e50 !important;
+}
+
+body.light-theme #contactme .inner {
+	color: #2c3e50 !important;
 }
 
 body.light-theme .button, body.light-theme input[type="submit"] {
