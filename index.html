@@ -77,48 +77,60 @@
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services">
-        <div class="services-container">
-            <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-code"></i>
+    <!-- Services & About Section -->
+    <section id="about" class="services-about">
+        <div class="services-about-container">
+            <!-- Services Column -->
+            <div class="services-column">
+                <div class="service-timeline">
+                    <div class="service-timeline-item">
+                        <div class="service-timeline-dot"></div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <h4>Website Development</h4>
+                        </div>
+                    </div>
+                    <div class="service-timeline-item">
+                        <div class="service-timeline-dot"></div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-tablet-alt"></i>
+                            </div>
+                            <h4>App Development</h4>
+                        </div>
+                    </div>
+                    <div class="service-timeline-item">
+                        <div class="service-timeline-dot"></div>
+                        <div class="service-content">
+                            <div class="service-icon">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h4>Website Hosting</h4>
+                        </div>
+                    </div>
                 </div>
-                <h4>Mobile Development</h4>
             </div>
-            <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h4>App Development</h4>
-            </div>
-            <div class="service-item">
-                <div class="service-icon">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h4>Backend Development</h4>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="about-container">
-            <h2>About me</h2>
-            <p>I started my software journey from Android development. Through that, I learned to love the process of creating from scratch. Since then, this has led me to software development as it fulfills my love for learning and building things.</p>
             
-            <div class="stats">
-                <div class="stat-item">
-                    <h3>120<span class="accent">+</span></h3>
-                    <p>Completed<br>Projects</p>
-                </div>
-                <div class="stat-item">
-                    <h3>95<span class="accent">%</span></h3>
-                    <p>Client<br>satisfaction</p>
-                </div>
-                <div class="stat-item">
-                    <h3>6<span class="accent">+</span></h3>
-                    <p>Years of<br>experience</p>
+            <!-- About Column -->
+            <div class="about-column">
+                <h2>About me</h2>
+                <p>I started my software journey from photography. Through that, I learned to love the process of creating from scratch. Since then, this has led me to software development as it fulfills my love for learning and building things.</p>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>120<span class="accent">+</span></h3>
+                        <p>Completed<br>Projects</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>95<span class="accent">%</span></h3>
+                        <p>Client<br>satisfaction</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>10<span class="accent">+</span></h3>
+                        <p>Years of<br>experience</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -293,47 +305,170 @@
     <!-- Projects Section -->
     <section id="projects" class="projects">
         <div class="projects-container">
-            <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="images/bazaar_customer.png" alt="Bazaar Customer">
-                    <div class="project-info">
-                        <h3>Bazaar Customer</h3>
-                        <p>B2B e-commerce platform for wholesalers and shopkeepers in Pakistan with 100k+ active monthly users.</p>
-                        <div class="project-tech">
-                            <span>Android</span>
-                            <span>Kotlin</span>
-                            <span>Compose</span>
+            <h2>My Projects</h2>
+            <div class="carousel-container">
+                <div class="carousel-wrapper">
+                    <div class="carousel-track" id="carousel-track">
+                        <!-- Bazaar Customer -->
+                        <div class="project-card">
+                            <img src="images/bazaar_customer.png" alt="Bazaar Customer">
+                            <div class="project-info">
+                                <h3>Bazaar Customer</h3>
+                                <p>B2B e-commerce platform for wholesalers and shopkeepers in Pakistan with 100k+ active monthly users.</p>
+                                <div class="project-tech">
+                                    <span>Android</span>
+                                    <span>Kotlin</span>
+                                    <span>Compose</span>
+                                </div>
+                                <a href="https://play.google.com/store/apps/details?id=bazaar.tech.com" class="project-link" target="_blank">View Project</a>
+                            </div>
                         </div>
-                        <a href="https://play.google.com/store/apps/details?id=bazaar.tech.com" class="project-link">View Project</a>
+
+                        <!-- Bazaar Agent -->
+                        <div class="project-card">
+                            <img src="images/bazaar_agent.png" alt="Bazaar Agent">
+                            <div class="project-info">
+                                <h3>Bazaar Agent</h3>
+                                <p>Agent App designed to facilitate the work of agents who visit customer's shops to take orders and achieve their sales targets.</p>
+                                <div class="project-tech">
+                                    <span>Android</span>
+                                    <span>Kotlin</span>
+                                    <span>Hilt</span>
+                                    <span>Compose</span>
+                                </div>
+                                <a href="https://play.google.com/store/apps/details?id=com.tech.bazaar.agent" class="project-link" target="_blank">View Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Blog App -->
+                        <div class="project-card">
+                            <img src="images/blog.png" alt="Blog App">
+                            <div class="project-info">
+                                <h3>Blog App</h3>
+                                <p>Multi-module Android app with clean architecture allowing users to read and subscribe to their favorite blogs.</p>
+                                <div class="project-tech">
+                                    <span>Android</span>
+                                    <span>Kotlin</span>
+                                    <span>Compose</span>
+                                    <span>Hilt</span>
+                                    <span>E2E Testing</span>
+                                </div>
+                                <a href="https://github.com/SyedAmmarSohail/BlogApp" class="project-link" target="_blank">View Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Matrimonial App -->
+                        <div class="project-card">
+                            <img src="images/rishtbook_portfolio.png" alt="Matrimonial App">
+                            <div class="project-info">
+                                <h3>Matrimonial App</h3>
+                                <p>Flutter app allowing users to create multiple profiles for relations and get matched based on profile data with filtering and favorites.</p>
+                                <div class="project-tech">
+                                    <span>Flutter</span>
+                                    <span>Dart</span>
+                                    <span>Provider</span>
+                                    <span>MVVM</span>
+                                </div>
+                                <a href="https://play.google.com/store/apps/details?id=com.structure.rishta_book" class="project-link" target="_blank">View Project</a>
+                            </div>
+                        </div>
+
+                        <!-- E-Commerce -->
+                        <div class="project-card">
+                            <img src="images/ecommerce.png" alt="E-Commerce App">
+                            <div class="project-info">
+                                <h3>E-Commerce App</h3>
+                                <p>Versatile ecommerce Android app with user-friendly interface, multiple product categories, shopping cart, and secure payment options.</p>
+                                <div class="project-tech">
+                                    <span>Android</span>
+                                    <span>Kotlin</span>
+                                    <span>Dagger2</span>
+                                    <span>Payment Gateway</span>
+                                </div>
+                                <a href="https://play.google.com/store/apps/details?id=com.structure.ecommerce" class="project-link" target="_blank">View Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Comera -->
+                        <div class="project-card">
+                            <img src="images/comera.png" alt="Comera">
+                            <div class="project-info">
+                                <h3>Comera</h3>
+                                <p>Dubai-based communication app (like WhatsApp) with 1M+ downloads featuring audio calls, video calls, text messaging, and group functionality.</p>
+                                <div class="project-tech">
+                                    <span>Android</span>
+                                    <span>Kotlin</span>
+                                    <span>XMPP</span>
+                                    <span>Smack</span>
+                                    <span>Dagger2</span>
+                                </div>
+                                <a href="https://play.google.com/store/apps/details?id=com.is.core.app" class="project-link" target="_blank">View Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Beauty Salon -->
+                        <div class="project-card">
+                            <img src="images/beauty.png" alt="Beauty Salon App">
+                            <div class="project-info">
+                                <h3>Beauty Salon App</h3>
+                                <p>Service booking app for haircuts, massages, facials with location-based salon search and home service options.</p>
+                                <div class="project-tech">
+                                    <span>Java</span>
+                                    <span>XML</span>
+                                    <span>Socket.io</span>
+                                    <span>FCM</span>
+                                    <span>Maps</span>
+                                </div>
+                                <a href="#" class="project-link disabled">Private Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Odiigo -->
+                        <div class="project-card">
+                            <img src="images/odiigo.png" alt="Odiigo Car Booking">
+                            <div class="project-info">
+                                <h3>Odiigo Car Booking</h3>
+                                <p>Car booking application enabling users to search and instantly book cars with owner approval system and push notifications.</p>
+                                <div class="project-tech">
+                                    <span>Java</span>
+                                    <span>XML</span>
+                                    <span>FCM</span>
+                                    <span>Maps</span>
+                                    <span>Booking System</span>
+                                </div>
+                                <a href="#" class="project-link disabled">Private Project</a>
+                            </div>
+                        </div>
+
+                        <!-- Sanam Property -->
+                        <div class="project-card">
+                            <img src="images/sanam.png" alt="Sanam Property App">
+                            <div class="project-info">
+                                <h3>Sanam Property App</h3>
+                                <p>Property marketplace app allowing users to sell, buy, or rent properties with in-app messaging and direct contact features.</p>
+                                <div class="project-tech">
+                                    <span>Java</span>
+                                    <span>XML</span>
+                                    <span>FCM</span>
+                                    <span>Messaging</span>
+                                    <span>Real Estate</span>
+                                </div>
+                                <a href="#" class="project-link disabled">Private Project</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="project-card">
-                    <img src="images/bazaar_agent.png" alt="Bazaar Agent">
-                    <div class="project-info">
-                        <h3>Bazaar Agent</h3>
-                        <p>Agent App designed to facilitate the work of agents who visit customer's shops to take orders.</p>
-                        <div class="project-tech">
-                            <span>Android</span>
-                            <span>Kotlin</span>
-                            <span>Hilt</span>
-                        </div>
-                        <a href="https://play.google.com/store/apps/details?id=com.tech.bazaar.agent" class="project-link">View Project</a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="images/blog.png" alt="Blog App">
-                    <div class="project-info">
-                        <h3>Blog App</h3>
-                        <p>Multi-module Android app with clean architecture allowing users to read and subscribe to blogs.</p>
-                        <div class="project-tech">
-                            <span>Android</span>
-                            <span>Kotlin</span>
-                            <span>Compose</span>
-                        </div>
-                        <a href="https://github.com/SyedAmmarSohail/BlogApp" class="project-link">View Project</a>
-                    </div>
-                </div>
+                
+                <!-- Navigation Arrows -->
+                <button class="carousel-btn prev-btn" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn next-btn" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+                
+                <!-- Dot Indicators -->
+                <div class="carousel-dots" id="carouselDots"></div>
             </div>
         </div>
     </section>

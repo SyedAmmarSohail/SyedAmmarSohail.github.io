@@ -292,81 +292,131 @@ body {
 }
 
 /* Services Section */
-.services {
-    padding: 4rem 2rem;
-    background: var(--dark-bg);
-}
-
-.services-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.service-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
-    background: var(--card-bg);
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-}
-
-.service-item:hover {
-    transform: translateY(-5px);
-}
-
-.service-icon {
-    width: 80px;
-    height: 80px;
-    background: var(--accent-color);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.service-icon i {
-    font-size: 2rem;
-    color: white;
-}
-
-.service-item h4 {
-    font-size: 1.2rem;
-    color: var(--text-light);
-}
-
-/* About Section */
-.about {
+/* Services & About Section */
+.services-about {
     padding: 6rem 2rem;
     background: var(--darker-bg);
 }
 
-.about-container {
-    max-width: 1200px;
+.services-about-container {
+    max-width: 1400px;
     margin: 0 auto;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
 }
 
-.about h2 {
+/* Services Column */
+.services-column {
+    position: relative;
+}
+
+.service-timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.service-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent-color);
+    border-radius: 2px;
+}
+
+.service-timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+}
+
+.service-timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.service-timeline-dot {
+    position: absolute;
+    left: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    border: 4px solid var(--darker-bg);
+    z-index: 2;
+}
+
+.service-content {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.service-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--card-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.service-icon i {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.service-content h4 {
+    font-size: 1.3rem;
+    color: var(--text-light);
+    margin: 0;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.service-timeline-item:hover .service-icon {
+    background: var(--accent-color);
+    transform: scale(1.1);
+    transition: all 0.3s ease;
+}
+
+.service-timeline-item:hover .service-icon i {
+    color: white;
+}
+
+.service-timeline-item:hover .service-content h4 {
+    color: var(--accent-color);
+    transition: color 0.3s ease;
+}
+
+/* About Column */
+.about-column {
+    padding-left: 2rem;
+}
+
+.about-column h2 {
     font-size: 3rem;
     margin-bottom: 2rem;
     color: var(--text-light);
+    text-align: left;
 }
 
-.about p {
-    font-size: 1.2rem;
+.about-column p {
+    font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     color: var(--text-gray);
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    text-align: left;
 }
 
 .stats {
@@ -549,7 +599,7 @@ body {
 }
 
 .projects-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 
@@ -560,36 +610,61 @@ body {
     color: var(--text-light);
 }
 
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    border-radius: 20px;
+    padding-bottom: 3rem;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    border-radius: 20px;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
     gap: 2rem;
+    padding: 1rem 0;
 }
 
 .project-card {
     background: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     border: 1px solid var(--border-color);
+    flex: 0 0 350px;
+    min-width: 350px;
+    height: 520px;
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card:hover {
     transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(255, 107, 53, 0.2);
 }
 
 .project-card img {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .project-info {
     padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
 .project-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin-bottom: 1rem;
     color: var(--text-light);
 }
@@ -598,6 +673,7 @@ body {
     color: var(--text-gray);
     margin-bottom: 1rem;
     line-height: 1.6;
+    font-size: 0.9rem;
 }
 
 .project-tech {
@@ -612,7 +688,7 @@ body {
     color: white;
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     font-weight: 600;
 }
 
@@ -626,11 +702,96 @@ body {
     border-radius: 25px;
     transition: all 0.3s ease;
     font-weight: 600;
+    text-align: center;
+    margin-top: auto;
+    align-self: flex-start;
 }
 
 .project-link:hover {
     background: var(--accent-color);
     color: white;
+}
+
+.project-link.disabled {
+    color: var(--text-muted);
+    border-color: var(--text-muted);
+    cursor: not-allowed;
+}
+
+.project-link.disabled:hover {
+    background: transparent;
+    color: var(--text-muted);
+}
+
+/* Carousel Navigation */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 107, 53, 0.9);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.carousel-btn:hover {
+    background: var(--accent-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+.carousel-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: translateY(-50%);
+}
+
+/* Carousel Dots */
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.carousel-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 107, 53, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+.carousel-dot:hover {
+    background: var(--accent-color);
+    transform: scale(1.1);
 }
 
 /* Contact Section */
@@ -736,19 +897,88 @@ body {
         font-size: 2rem;
     }
     
-    .services-container {
+    .services-about-container {
         grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .service-timeline {
+        padding-left: 1.5rem;
+    }
+    
+    .service-timeline-item {
+        padding-left: 1.5rem;
+    }
+    
+    .service-timeline-dot {
+        left: -1.5rem;
+        width: 12px;
+        height: 12px;
+        border: 3px solid var(--darker-bg);
+    }
+    
+    .service-content {
+        gap: 1rem;
+    }
+    
+    .service-icon {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .service-icon i {
+        font-size: 1.2rem;
+    }
+    
+    .service-content h4 {
+        font-size: 1.1rem;
+    }
+    
+    .about-column {
+        padding-left: 0;
+    }
+    
+    .about-column h2 {
+        text-align: center;
+    }
+    
+    .about-column p {
+        text-align: center;
     }
     
     .stats {
         grid-template-columns: 1fr;
     }
     
-    .projects-grid {
-        grid-template-columns: 1fr;
+    .project-card {
+        flex: 0 0 300px;
+        min-width: 300px;
+        height: 500px;
     }
     
-    .about h2,
+    .project-info {
+        padding: 1.2rem;
+    }
+    
+    .project-info h3 {
+        font-size: 1.2rem;
+    }
+    
+    .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .prev-btn {
+        left: 10px;
+    }
+    
+    .next-btn {
+        right: 10px;
+    }
+    
+    .about-column h2,
     .experience h2,
     .projects h2,
     .contact h2 {
@@ -820,11 +1050,100 @@ body {
         font-size: 1.5rem;
     }
     
-    .about h2,
+    .services-about-container {
+        gap: 2rem;
+    }
+    
+    .service-timeline {
+        padding-left: 1rem;
+    }
+    
+    .service-timeline-item {
+        padding-left: 1rem;
+        margin-bottom: 2rem;
+    }
+    
+    .service-timeline-dot {
+        left: -1rem;
+        width: 10px;
+        height: 10px;
+        border: 2px solid var(--darker-bg);
+    }
+    
+    .service-content {
+        gap: 0.8rem;
+    }
+    
+    .service-icon {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .service-icon i {
+        font-size: 1rem;
+    }
+    
+    .service-content h4 {
+        font-size: 1rem;
+    }
+    
+    .about-column h2,
     .experience h2,
     .projects h2,
     .contact h2 {
         font-size: 2rem;
+    }
+    
+    .project-card {
+        flex: 0 0 280px;
+        min-width: 280px;
+        height: 480px;
+    }
+    
+    .project-info {
+        padding: 1rem;
+    }
+    
+    .project-info h3 {
+        font-size: 1.1rem;
+    }
+    
+    .project-info p {
+        font-size: 0.85rem;
+    }
+    
+    .project-tech span {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.6rem;
+    }
+    
+    .project-link {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+    
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+    
+    .prev-btn {
+        left: 5px;
+    }
+    
+    .next-btn {
+        right: 5px;
+    }
+    
+    .carousel-dots {
+        gap: 0.5rem;
+        bottom: -0.5rem;
+    }
+    
+    .carousel-dot {
+        width: 10px;
+        height: 10px;
     }
     
     .timeline {
@@ -888,7 +1207,7 @@ section {
 
 /* Hover effects for better UX */
 .project-card,
-.service-item,
+.service-content,
 .stat-item,
 .contact-item {
     cursor: pointer;
@@ -898,7 +1217,7 @@ section {
     box-shadow: 0 10px 30px rgba(255, 107, 53, 0.2);
 }
 
-.service-item:hover {
+.service-content:hover {
     box-shadow: 0 5px 20px rgba(255, 107, 53, 0.1);
 }
 

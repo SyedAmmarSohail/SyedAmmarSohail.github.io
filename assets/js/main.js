@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Animate elements on scroll
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .project-card, .contact-item');
+        const elements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .carousel-container, .contact-item');
         
         elements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize animation styles
     const initAnimations = function() {
-        const elements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .project-card, .contact-item');
+        const elements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .carousel-container, .contact-item');
         
         elements.forEach(element => {
             element.style.opacity = '0';
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        const observeElements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .project-card, .contact-item');
+        const observeElements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .carousel-container, .contact-item');
         observeElements.forEach(el => observer.observe(el));
     }
     
@@ -246,7 +246,252 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     `;
     document.head.appendChild(navStyle);
+    
+    // Carousel Functionality
+    initializeCarousel();
 });
+
+// Carousel Implementation
+function initializeCarousel() {
+    const track = document.getElementById('carousel-track');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const dotsContainer = document.getElementById('carouselDots');
+    
+    if (!track || !prevBtn || !nextBtn || !dotsContainer) return;
+    
+    const cards = track.querySelectorAll('.project-card');
+    const totalCards = cards.length;
+    let currentIndex = 0;
+    let cardsPerView = getCardsPerView();
+    let maxIndex = Math.max(0, totalCards - cardsPerView);
+    let isAutoPlaying = true;
+    let autoPlayInterval;
+    
+    // Create dot indicators
+    function createDots() {
+        dotsContainer.innerHTML = '';
+        const totalDots = maxIndex + 1;
+        
+        for (let i = 0; i <= maxIndex; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+    
+    // Get number of cards to show based on screen size
+    function getCardsPerView() {
+        const screenWidth = window.innerWidth;
+        if (screenWidth >= 1200) return 3;
+        if (screenWidth >= 768) return 2;
+        return 1;
+    }
+    
+    // Update carousel position
+    function updateCarousel() {
+        const cardWidth = cards[0].offsetWidth + 32; // 32px for gap
+        const translateX = -currentIndex * cardWidth;
+        track.style.transform = `translateX(${translateX}px)`;
+        
+        // Update dots
+        document.querySelectorAll('.carousel-dot').forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+        
+        // Update button states
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex === maxIndex;
+    }
+    
+    // Go to specific slide
+    function goToSlide(index) {
+        currentIndex = Math.max(0, Math.min(index, maxIndex));
+        updateCarousel();
+        resetAutoPlay();
+    }
+    
+    // Previous slide
+    function prevSlide() {
+        if (currentIndex > 0) {
+            goToSlide(currentIndex - 1);
+        }
+    }
+    
+    // Next slide
+    function nextSlide() {
+        if (currentIndex < maxIndex) {
+            goToSlide(currentIndex + 1);
+        } else if (isAutoPlaying) {
+            // Loop back to start for auto-play
+            goToSlide(0);
+        }
+    }
+    
+    // Auto-play functionality
+    function startAutoPlay() {
+        if (autoPlayInterval) clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => {
+            if (isAutoPlaying) {
+                nextSlide();
+            }
+        }, 4000);
+    }
+    
+    function stopAutoPlay() {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    }
+    
+    function resetAutoPlay() {
+        if (isAutoPlaying) {
+            stopAutoPlay();
+            startAutoPlay();
+        }
+    }
+    
+    // Event listeners
+    prevBtn.addEventListener('click', () => {
+        prevSlide();
+        pauseAutoPlay();
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        nextSlide();
+        pauseAutoPlay();
+    });
+    
+    // Pause auto-play temporarily when user interacts
+    function pauseAutoPlay() {
+        isAutoPlaying = false;
+        stopAutoPlay();
+        setTimeout(() => {
+            isAutoPlaying = true;
+            startAutoPlay();
+        }, 8000); // Resume after 8 seconds
+    }
+    
+    // Handle window resize
+    function handleResize() {
+        const newCardsPerView = getCardsPerView();
+        if (newCardsPerView !== cardsPerView) {
+            cardsPerView = newCardsPerView;
+            maxIndex = Math.max(0, totalCards - cardsPerView);
+            currentIndex = Math.min(currentIndex, maxIndex);
+            createDots();
+            updateCarousel();
+        }
+    }
+    
+    // Keyboard navigation
+    function handleKeydown(e) {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            pauseAutoPlay();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            pauseAutoPlay();
+        }
+    }
+    
+    // Touch/swipe support
+    let startX = 0;
+    let isDragging = false;
+    
+    function handleTouchStart(e) {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+        track.style.transition = 'none';
+    }
+    
+    function handleTouchMove(e) {
+        if (!isDragging) return;
+        
+        const currentX = e.touches[0].clientX;
+        const diffX = startX - currentX;
+        const cardWidth = cards[0].offsetWidth + 32;
+        const currentTranslateX = -currentIndex * cardWidth;
+        
+        track.style.transform = `translateX(${currentTranslateX - diffX}px)`;
+    }
+    
+    function handleTouchEnd(e) {
+        if (!isDragging) return;
+        
+        isDragging = false;
+        track.style.transition = 'transform 0.5s ease-in-out';
+        
+        const endX = e.changedTouches[0].clientX;
+        const diffX = startX - endX;
+        const threshold = 50;
+        
+        if (Math.abs(diffX) > threshold) {
+            if (diffX > 0 && currentIndex < maxIndex) {
+                nextSlide();
+            } else if (diffX < 0 && currentIndex > 0) {
+                prevSlide();
+            } else {
+                updateCarousel(); // Snap back
+            }
+            pauseAutoPlay();
+        } else {
+            updateCarousel(); // Snap back
+        }
+    }
+    
+    // Intersection Observer for auto-play control
+    const carouselObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                startAutoPlay();
+            } else {
+                stopAutoPlay();
+            }
+        });
+    });
+    
+    // Initialize
+    createDots();
+    updateCarousel();
+    startAutoPlay();
+    
+    // Add event listeners
+    window.addEventListener('resize', debounce(handleResize, 250));
+    document.addEventListener('keydown', handleKeydown);
+    track.addEventListener('touchstart', handleTouchStart, { passive: true });
+    track.addEventListener('touchmove', handleTouchMove, { passive: true });
+    track.addEventListener('touchend', handleTouchEnd, { passive: true });
+    carouselObserver.observe(track);
+    
+    // Pause auto-play when hovering over carousel
+    const carouselContainer = track.closest('.carousel-container');
+    if (carouselContainer) {
+        carouselContainer.addEventListener('mouseenter', () => {
+            stopAutoPlay();
+        });
+        
+        carouselContainer.addEventListener('mouseleave', () => {
+            if (isAutoPlaying) {
+                startAutoPlay();
+            }
+        });
+    }
+    
+    // Cleanup function
+    return function cleanup() {
+        stopAutoPlay();
+        window.removeEventListener('resize', handleResize);
+        document.removeEventListener('keydown', handleKeydown);
+        track.removeEventListener('touchstart', handleTouchStart);
+        track.removeEventListener('touchmove', handleTouchMove);
+        track.removeEventListener('touchend', handleTouchEnd);
+        carouselObserver.disconnect();
+    };
+}
 
 // Add mobile menu functionality (if needed in future)
 const addMobileMenu = function() {
