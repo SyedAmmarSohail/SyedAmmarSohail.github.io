@@ -55,10 +55,21 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(13, 17, 23, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(13, 17, 23, 0.6);
+    backdrop-filter: blur(12px) saturate(1.5);
+    -webkit-backdrop-filter: blur(12px) saturate(1.5);
+    border-bottom: 1px solid rgba(255, 107, 53, 0.4);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     transition: all 0.3s ease;
+}
+
+/* Fallback for browsers that don't support backdrop-filter */
+@supports not (backdrop-filter: blur(12px)) {
+    #header {
+        background: rgba(13, 17, 23, 0.9);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    }
 }
 
 .navbar {
@@ -66,7 +77,7 @@ body {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
     display: flex;
