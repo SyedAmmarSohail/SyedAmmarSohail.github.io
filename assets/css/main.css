@@ -136,7 +136,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 0 2rem;
+    padding: 80px 2rem 0;
     background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
     position: relative;
     overflow: hidden;
@@ -1187,7 +1187,10 @@ body {
         padding: 1rem 1rem;
     }
     
-    .hero,
+    .hero {
+        padding: 70px 1rem 3rem;
+    }
+    
     .services,
     .about,
     .services-about,
