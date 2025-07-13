@@ -7288,12 +7288,15 @@ body.light-theme #contactme .inner {
 }
 
 body.light-theme .button, body.light-theme input[type="submit"] {
-	background-color: #3498db !important;
-	color: #ffffff !important;
+	background-color: transparent !important;
+	color: #000000 !important;
+	box-shadow: inset 0 0 0 2px #000000 !important;
 }
 
 body.light-theme .button:hover, body.light-theme input[type="submit"]:hover {
-	background-color: #2980b9 !important;
+	background-color: #000000 !important;
+	color: #ffffff !important;
+	box-shadow: inset 0 0 0 2px #000000 !important;
 }
 
 body.light-theme .cd-timeline-content {
@@ -7366,5 +7369,60 @@ body.light-theme #menu .close:before, body.light-theme #menu .close:after {
 		font-size: 0.8em;
 	}
 }
+
+body.light-theme #menu .close:before, body.light-theme #menu .close:after {
+	color: #2c3e50 !important;
+}
+
+/* Contact form separator for light theme */
+body.light-theme #contact > .inner > :nth-child(2n - 1) {
+	border-right: solid 1px rgba(44, 62, 80, 0.2) !important;
+}
+
+/* Contact form horizontal separators for light theme */
+body.light-theme #main.alt {
+	border-bottom: solid 1px rgba(44, 62, 80, 0.2) !important;
+}
+
+body.light-theme #contact {
+	border-bottom: solid 1px rgba(44, 62, 80, 0.2) !important;
+}
+
+/* Contact method separator line for light theme */
+body.light-theme #contact > .inner > .split > *:before {
+	border-top: solid 1px rgba(44, 62, 80, 0.2) !important;
+}
+
+@media screen and (max-width: 736px) {
+	.theme-toggle-container {
+		margin-left: 0.5em;
+	}
 	
+	.theme-toggle {
+		height: 2em;
+		width: 2em;
+		font-size: 0.8em;
+	}
 	
+	.theme-toggle-sun,
+	.theme-toggle-moon {
+		font-size: 0.9em;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.theme-toggle-container {
+		margin-left: 0.25em;
+	}
+	
+	.theme-toggle {
+		height: 1.8em;
+		width: 1.8em;
+		font-size: 0.7em;
+	}
+	
+	.theme-toggle-sun,
+	.theme-toggle-moon {
+		font-size: 0.8em;
+	}
+}
