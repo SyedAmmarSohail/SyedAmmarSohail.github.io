@@ -148,7 +148,7 @@ body {
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
     align-items: center;
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
     z-index: 1;
 }
