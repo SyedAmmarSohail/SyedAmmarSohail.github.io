@@ -246,8 +246,8 @@ body {
 }
 
 .profile-img {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     object-fit: cover;
     display: block;
     position: relative;
@@ -1028,8 +1028,8 @@ body {
     }
     
     .profile-img {
-        width: 250px;
-        height: 250px;
+        width: 320px;
+        height: 320px;
     }
     
     .hero-buttons {
@@ -1198,8 +1198,8 @@ body {
     }
     
     .profile-img {
-        width: 200px;
-        height: 200px;
+        width: 260px;
+        height: 260px;
     }
     
     .tech-stack {
