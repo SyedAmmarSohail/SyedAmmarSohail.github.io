@@ -7290,15 +7290,15 @@ body.light-theme #contactme .inner {
 body.light-theme .button, body.light-theme input[type="submit"] {
 	background-color: transparent !important;
 	color: #000000 !important;
-	border: 2px solid #000000 !important;
-	box-shadow: none !important;
+	border: 0 !important;
+	box-shadow: inset 0 0 0 2px #000000 !important;
 }
 
 body.light-theme .button:hover, body.light-theme input[type="submit"]:hover {
 	background-color: #000000 !important;
 	color: #ffffff !important;
-	border: 2px solid #000000 !important;
-	box-shadow: none !important;
+	border: 0 !important;
+	box-shadow: inset 0 0 0 2px #000000 !important;
 }
 
 body.light-theme .cd-timeline-content {
