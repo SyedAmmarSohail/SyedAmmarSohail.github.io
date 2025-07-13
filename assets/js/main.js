@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Animate elements on scroll
     const animateOnScroll = function() {
-        const elements = document.querySelectorAll('.service-item, .stat-item, .project-card, .contact-item');
+        const elements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .project-card, .contact-item');
         
         elements.forEach(element => {
             const elementTop = element.getBoundingClientRect().top;
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize animation styles
     const initAnimations = function() {
-        const elements = document.querySelectorAll('.service-item, .stat-item, .project-card, .contact-item');
+        const elements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .project-card, .contact-item');
         
         elements.forEach(element => {
             element.style.opacity = '0';
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        const observeElements = document.querySelectorAll('.service-item, .stat-item, .project-card, .contact-item');
+        const observeElements = document.querySelectorAll('.service-item, .stat-item, .timeline-item, .project-card, .contact-item');
         observeElements.forEach(el => observer.observe(el));
     }
     
