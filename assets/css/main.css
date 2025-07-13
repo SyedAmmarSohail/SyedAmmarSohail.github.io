@@ -168,9 +168,16 @@ body {
 
 .hero-content h3 {
     font-size: 2.5rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
     font-weight: 700;
     color: var(--text-light);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--text-gray);
+    font-weight: 300;
 }
 
 .accent {
@@ -222,41 +229,32 @@ body {
     position: relative;
 }
 
-.profile-circle {
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent-color), #ff8b35);
-    padding: 8px;
-    position: relative;
-    overflow: hidden;
-}
-
-.profile-circle::before {
+.hero-image::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 120%;
-    height: 120%;
-    background: conic-gradient(var(--accent-color), #ff8b35, var(--accent-color));
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(255, 107, 53, 0.1) 0%, transparent 70%);
     border-radius: 50%;
-    animation: rotate 20s linear infinite;
-    z-index: -1;
+    z-index: 1;
 }
 
-@keyframes rotate {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-.profile-circle img {
-    width: 100%;
-    height: 100%;
+.profile-img {
+    width: 400px;
+    height: 400px;
     object-fit: cover;
+    display: block;
+    position: relative;
+    z-index: 2;
     border-radius: 50%;
+    border: 4px solid var(--accent-color);
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.3);
 }
+
+
 
 /* Tech Stack */
 .tech-stack {
@@ -414,9 +412,27 @@ body {
 .about-column p {
     font-size: 1.1rem;
     line-height: 1.8;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     color: var(--text-gray);
     text-align: left;
+}
+
+.personal-info {
+    margin-bottom: 2rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    color: var(--text-gray);
+}
+
+.info-item i {
+    color: var(--accent-color);
+    margin-right: 0.8rem;
+    width: 20px;
+    font-size: 1.1rem;
 }
 
 .stats {
@@ -448,6 +464,99 @@ body {
     color: var(--text-gray);
     font-size: 1rem;
     margin: 0;
+}
+
+/* Education Section */
+.education {
+    padding: 6rem 0;
+    background: var(--dark-bg);
+}
+
+.education-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.education h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    color: var(--text-light);
+}
+
+.education-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+}
+
+.education-info h3 {
+    color: var(--accent-color);
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.education-info .institution {
+    display: block;
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 0.5rem;
+}
+
+.education-info .location {
+    display: block;
+    color: var(--text-gray);
+    margin-bottom: 0.5rem;
+}
+
+.education-info .duration {
+    display: block;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.skills-section h3 {
+    color: var(--text-light);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-3px);
+}
+
+.skill-category h4 {
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.skill-category p {
+    color: var(--text-gray);
+    line-height: 1.6;
 }
 
 /* Work Experience Section */
@@ -874,7 +983,7 @@ body {
         font-size: 1.8rem;
     }
     
-    .profile-circle {
+    .profile-img {
         width: 250px;
         height: 250px;
     }
@@ -1037,7 +1146,7 @@ body {
         font-size: 1.3rem;
     }
     
-    .profile-circle {
+    .profile-img {
         width: 200px;
         height: 200px;
     }
