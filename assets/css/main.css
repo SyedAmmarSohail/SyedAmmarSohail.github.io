@@ -621,12 +621,12 @@ body {
 }
 
 .timeline-item.left .timeline-content {
-    margin-right: 3rem;
+    margin-right: calc(50% + 1.5rem);
     text-align: left;
 }
 
 .timeline-item.right .timeline-content {
-    margin-left: 3rem;
+    margin-left: calc(50% + 1.5rem);
     text-align: left;
 }
 
@@ -636,8 +636,7 @@ body {
     padding: 2rem;
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    max-width: 450px;
-    width: 100%;
+    width: calc(50% - 1.5rem);
     position: relative;
 }
 
@@ -1324,7 +1323,10 @@ body.menu-open {
     .timeline-item.left .timeline-content,
     .timeline-item.right .timeline-content {
         margin: 0;
+        margin-left: 0;
+        margin-right: 0;
         text-align: left;
+        width: 100%;
         max-width: 100%;
     }
 
@@ -1527,7 +1529,10 @@ body.menu-open {
     .timeline-item.left .timeline-content,
     .timeline-item.right .timeline-content {
         margin: 0;
+        margin-left: 0;
+        margin-right: 0;
         text-align: left;
+        width: 100%;
         max-width: 100%;
         padding: 1.5rem;
     }
